@@ -31,7 +31,9 @@ export const IconCard: FC<IconCardProps> = ({ label, icon: Icon, imageUrl, image
         isSelected ? "border-primary-foreground bg-primary/20 border-2" : ""
       )}>
         <CardContent className="flex flex-col items-center justify-center p-4 aspect-square">
-          {imageUrl ? (
+          {Icon ? (
+            <Icon className="w-20 h-20 text-muted-foreground mb-2" />
+          ) : imageUrl ? (
             <Image
               src={imageUrl}
               alt={label}
@@ -40,8 +42,6 @@ export const IconCard: FC<IconCardProps> = ({ label, icon: Icon, imageUrl, image
               className="object-cover rounded-md mb-2"
               data-ai-hint={imageHint}
             />
-          ) : Icon ? (
-            <Icon className="w-20 h-20 text-muted-foreground mb-2" />
           ) : null}
           <p className="font-semibold text-foreground text-base md:text-lg">{label}</p>
         </CardContent>

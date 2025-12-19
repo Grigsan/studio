@@ -13,8 +13,23 @@ import {
   CookingPot,
   Sandwich,
   Footprints,
+  GlassWater,
+  Bed,
+  Soup,
+  Car,
+  Circle,
+  Square,
+  Star,
+  Heart,
+  Dog,
+  Bird,
+  Fish,
+  ShoppingBag,
+  Trees,
+  Building2,
+  School,
+  PersonStanding
 } from 'lucide-react';
-import data from './placeholder-images.json';
 
 export interface CardItem {
   id: string;
@@ -31,22 +46,17 @@ export interface Category {
   items: CardItem[];
 }
 
-const getImage = (id: string) => {
-    const img = data.placeholderImages.find(p => p.id === id);
-    return { imageUrl: img?.imageUrl, imageHint: img?.imageHint };
-}
-
 export const CATEGORIES: Category[] = [
   {
     id: 'wants',
     label: 'Я хочу',
     icon: Hand,
     items: [
-      { id: 'eat', label: 'Есть', icon: Utensils, ...getImage('eat') },
-      { id: 'drink', label: 'Пить', ...getImage('drink') },
-      { id: 'play', label: 'Играть', icon: ToyBrick, ...getImage('play') },
-      { id: 'sleep', label: 'Спать', ...getImage('sleep') },
-      { id: 'toilet', label: 'В туалет', ...getImage('toilet') },
+      { id: 'eat', label: 'Есть', icon: Utensils },
+      { id: 'drink', label: 'Пить', icon: GlassWater },
+      { id: 'play', label: 'Играть', icon: ToyBrick },
+      { id: 'sleep', label: 'Спать', icon: Bed },
+      { id: 'toilet', label: 'В туалет', icon: PersonStanding },
       { id: 'walk', label: 'Гулять', icon: Footprints },
     ],
   },
@@ -55,12 +65,12 @@ export const CATEGORIES: Category[] = [
     label: 'Еда и напитки',
     icon: Utensils,
     items: [
-      { id: 'apple', label: 'Яблоко', ...getImage('apple') },
-      { id: 'banana', label: 'Банан', ...getImage('banana') },
-      { id: 'soup', label: 'Суп', ...getImage('soup') },
-      { id: 'water', label: 'Вода', ...getImage('water') },
-      { id: 'juice', label: 'Сок', ...getImage('juice') },
-      { id: 'milk', label: 'Молоко', ...getImage('milk') },
+      { id: 'apple', label: 'Яблоко', icon: Circle },
+      { id: 'banana', label: 'Банан', icon: Circle },
+      { id: 'soup', label: 'Суп', icon: Soup },
+      { id: 'water', label: 'Вода', icon: GlassWater },
+      { id: 'juice', label: 'Сок', icon: GlassWater },
+      { id: 'milk', label: 'Молоко', icon: GlassWater },
       { id: 'bread', label: 'Хлеб', icon: Sandwich },
       { id: 'porridge', label: 'Каша', icon: CookingPot },
     ],
@@ -70,10 +80,10 @@ export const CATEGORIES: Category[] = [
     label: 'Животные',
     icon: Cat,
     items: [
-      { id: 'cat', label: 'Кошка', ...getImage('cat') },
-      { id: 'dog', label: 'Собака', ...getImage('dog') },
-      { id: 'bird', label: 'Птица', ...getImage('bird') },
-      { id: 'fish', label: 'Рыба', ...getImage('fish') },
+      { id: 'cat', label: 'Кошка', icon: Cat },
+      { id: 'dog', label: 'Собака', icon: Dog },
+      { id: 'bird', label: 'Птица', icon: Bird },
+      { id: 'fish', label: 'Рыба', icon: Fish },
     ],
   },
   {
@@ -81,11 +91,11 @@ export const CATEGORIES: Category[] = [
     label: 'Чувства',
     icon: Smile,
     items: [
-      { id: 'happy', label: 'Радость', ...getImage('happy') },
-      { id: 'sad', label: 'Грусть', ...getImage('sad') },
-      { id: 'angry', label: 'Злость', ...getImage('angry') },
-      { id: 'surprised', label: 'Удивление', ...getImage('surprised') },
-      { id: 'tired', label: 'Усталость', ...getImage('tired') },
+      { id: 'happy', label: 'Радость', icon: Smile },
+      { id: 'sad', label: 'Грусть', icon: Heart },
+      { id: 'angry', label: 'Злость', icon: Heart },
+      { id: 'surprised', label: 'Удивление', icon: Star },
+      { id: 'tired', label: 'Усталость', icon: Star },
     ],
   },
     {
@@ -93,10 +103,10 @@ export const CATEGORIES: Category[] = [
     label: 'Одежда',
     icon: Shirt,
     items: [
-      { id: 'shirt', label: 'Футболка', ...getImage('shirt') },
-      { id: 'pants', label: 'Штаны', ...getImage('pants') },
-      { id: 'dress', label: 'Платье', ...getImage('dress') },
-      { id: 'hat', label: 'Шапка', ...getImage('hat') },
+      { id: 'shirt', label: 'Футболка', icon: Shirt },
+      { id: 'pants', label: 'Штаны', icon: Square },
+      { id: 'dress', label: 'Платье', icon: Square },
+      { id: 'hat', label: 'Шапка', icon: Circle },
     ],
   },
   {
@@ -104,12 +114,12 @@ export const CATEGORIES: Category[] = [
     label: 'Люди',
     icon: Users,
     items: [
-      { id: 'mom', label: 'Мама', ...getImage('mom') },
-      { id: 'dad', label: 'Папа', ...getImage('dad') },
-      { id: 'teacher', label: 'Учитель', ...getImage('teacher') },
-      { id: 'friend', label: 'Друг', ...getImage('friend') },
-      { id: 'grandmother', label: 'Бабушка', ...getImage('grandmother') },
-      { id: 'grandfather', label: 'Дедушка', ...getImage('grandfather') },
+      { id: 'mom', label: 'Мама', icon: Users },
+      { id: 'dad', label: 'Папа', icon: Users },
+      { id: 'teacher', label: 'Учитель', icon: Users },
+      { id: 'friend', label: 'Друг', icon: Users },
+      { id: 'grandmother', label: 'Бабушка', icon: Users },
+      { id: 'grandfather', label: 'Дедушка', icon: Users },
     ],
   },
   {
@@ -117,11 +127,11 @@ export const CATEGORIES: Category[] = [
     label: 'Места',
     icon: Home,
     items: [
-      { id: 'home', label: 'Дом', ...getImage('home') },
-      { id: 'school', label: 'Школа', ...getImage('school') },
-      { id: 'shop', label: 'Магазин', ...getImage('shop') },
-      { id: 'park', label: 'Парк', ...getImage('park') },
-      { id: 'playground', label: 'Детская площадка', ...getImage('playground') },
+      { id: 'home', label: 'Дом', icon: Home },
+      { id: 'school', label: 'Школа', icon: School },
+      { id: 'shop', label: 'Магазин', icon: ShoppingBag },
+      { id: 'park', label: 'Парк', icon: Trees },
+      { id: 'playground', label: 'Детская площадка', icon: Building2 },
     ],
   },
     {
@@ -129,10 +139,10 @@ export const CATEGORIES: Category[] = [
     label: 'Игрушки',
     icon: ToyBrick,
     items: [
-      { id: 'ball', label: 'Мяч', ...getImage('ball') },
-      { id: 'car', label: 'Машинка', ...getImage('car') },
-      { id: 'doll', label: 'Кукла', ...getImage('doll') },
-      { id: 'blocks', label: 'Кубики', ...getImage('blocks') },
+      { id: 'ball', label: 'Мяч', icon: Circle },
+      { id: 'car', label: 'Машинка', icon: Car },
+      { id: 'doll', label: 'Кукла', icon: PersonStanding },
+      { id: 'blocks', label: 'Кубики', icon: Square },
     ],
   },
   {
@@ -140,12 +150,12 @@ export const CATEGORIES: Category[] = [
     label: 'Действия',
     icon: HelpingHand,
     items: [
-        { id: 'play', label: 'Играть', ...getImage('play') },
-        { id: 'sleep', label: 'Спать', ...getImage('sleep') },
-        { id: 'read', label: 'Читать', icon: Book, ...getImage('read') },
-        { id: 'draw', label: 'Рисовать', ...getImage('draw') },
-        { id: 'go', label: 'Идти', ...getImage('walk') },
-        { id: 'look', label: 'Смотреть', ...getImage('look') },
+        { id: 'play', label: 'Играть', icon: ToyBrick },
+        { id: 'sleep', label: 'Спать', icon: Bed },
+        { id: 'read', label: 'Читать', icon: Book },
+        { id: 'draw', label: 'Рисовать', icon: Square },
+        { id: 'go', label: 'Идти', icon: Footprints },
+        { id: 'look', label: 'Смотреть', icon: Star },
     ]
   }
 ];
