@@ -42,7 +42,7 @@ import {
   Milk,
   Bath,
   ShowerHead,
-Sofa,
+  Sofa,
   Lamp,
   Tv,
   Stethoscope,
@@ -216,8 +216,7 @@ export const CATEGORIES: Category[] = [
       { id: 'car', label: 'Машинка', icon: Car },
       { id: 'doll', label: 'Кукла', icon: PersonStanding },
       { id: 'blocks', label: 'Кубики', icon: Square },
-      { id: 'book', label: 'Книга', icon: Book },
-      { id_ : 'puzzle', label: 'Пазл', icon: ToyBrick },
+      { id: 'puzzle', label: 'Пазл', icon: ToyBrick },
     ],
   },
   {
