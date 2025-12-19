@@ -6,23 +6,10 @@ import {
   Home,
   ToyBrick,
   HelpingHand,
-  PersonStanding,
   Book,
   Hand,
-  Frown,
-  Angry,
-  Baby,
-  School,
-  Building2,
-  TreePine,
-  Gamepad2,
-  Bed,
-  Bath,
-  Milk,
-  CupSoda,
-  Apple,
-  Soup,
-  Banana,
+  Shirt,
+  Cat,
 } from 'lucide-react';
 import { PlaceHolderImages } from './placeholder-images';
 
@@ -53,10 +40,11 @@ export const CATEGORIES: Category[] = [
     icon: Hand,
     items: [
       { id: 'eat', label: 'Есть', icon: Utensils, ...getImage('eat') },
-      { id: 'drink', label: 'Пить', icon: CupSoda, ...getImage('drink') },
-      { id: 'play', label: 'Играть', icon: Gamepad2, ...getImage('play') },
-      { id: 'sleep', label: 'Спать', icon: Bed, ...getImage('sleep') },
-      { id: 'toilet', label: 'В туалет', icon: Bath, ...getImage('toilet') },
+      { id: 'drink', label: 'Пить', ...getImage('drink') },
+      { id: 'play', label: 'Играть', icon: ToyBrick, ...getImage('play') },
+      { id: 'sleep', label: 'Спать', ...getImage('sleep') },
+      { id: 'toilet', label: 'В туалет', ...getImage('toilet') },
+      { id: 'walk', label: 'Гулять', ...getImage('walk') },
     ],
   },
   {
@@ -70,6 +58,19 @@ export const CATEGORIES: Category[] = [
       { id: 'water', label: 'Вода', ...getImage('water') },
       { id: 'juice', label: 'Сок', ...getImage('juice') },
       { id: 'milk', label: 'Молоко', ...getImage('milk') },
+      { id: 'bread', label: 'Хлеб', ...getImage('bread') },
+      { id: 'porridge', label: 'Каша', ...getImage('porridge') },
+    ],
+  },
+    {
+    id: 'animals',
+    label: 'Животные',
+    icon: Cat,
+    items: [
+      { id: 'cat', label: 'Кошка', ...getImage('cat') },
+      { id: 'dog', label: 'Собака', ...getImage('dog') },
+      { id: 'bird', label: 'Птица', ...getImage('bird') },
+      { id: 'fish', label: 'Рыба', ...getImage('fish') },
     ],
   },
   {
@@ -80,6 +81,19 @@ export const CATEGORIES: Category[] = [
       { id: 'happy', label: 'Радость', ...getImage('happy') },
       { id: 'sad', label: 'Грусть', ...getImage('sad') },
       { id: 'angry', label: 'Злость', ...getImage('angry') },
+      { id: 'surprised', label: 'Удивление', ...getImage('surprised') },
+      { id: 'tired', label: 'Усталость', ...getImage('tired') },
+    ],
+  },
+    {
+    id: 'clothes',
+    label: 'Одежда',
+    icon: Shirt,
+    items: [
+      { id: 'shirt', label: 'Футболка', ...getImage('shirt') },
+      { id: 'pants', label: 'Штаны', ...getImage('pants') },
+      { id: 'dress', label: 'Платье', ...getImage('dress') },
+      { id: 'hat', label: 'Шапка', ...getImage('hat') },
     ],
   },
   {
@@ -90,6 +104,9 @@ export const CATEGORIES: Category[] = [
       { id: 'mom', label: 'Мама', ...getImage('mom') },
       { id: 'dad', label: 'Папа', ...getImage('dad') },
       { id: 'teacher', label: 'Учитель', ...getImage('teacher') },
+      { id: 'friend', label: 'Друг', ...getImage('friend') },
+      { id: 'grandmother', label: 'Бабушка', ...getImage('grandmother') },
+      { id: 'grandfather', label: 'Дедушка', ...getImage('grandfather') },
     ],
   },
   {
@@ -101,6 +118,18 @@ export const CATEGORIES: Category[] = [
       { id: 'school', label: 'Школа', ...getImage('school') },
       { id: 'shop', label: 'Магазин', ...getImage('shop') },
       { id: 'park', label: 'Парк', ...getImage('park') },
+      { id: 'playground', label: 'Детская площадка', ...getImage('playground') },
+    ],
+  },
+    {
+    id: 'toys',
+    label: 'Игрушки',
+    icon: ToyBrick,
+    items: [
+      { id: 'ball', label: 'Мяч', ...getImage('ball') },
+      { id: 'car', label: 'Машинка', ...getImage('car') },
+      { id: 'doll', label: 'Кукла', ...getImage('doll') },
+      { id: 'blocks', label: 'Кубики', ...getImage('blocks') },
     ],
   },
   {
@@ -110,6 +139,10 @@ export const CATEGORIES: Category[] = [
     items: [
         { id: 'play', label: 'Играть', ...getImage('play') },
         { id: 'sleep', label: 'Спать', ...getImage('sleep') },
+        { id: 'read', label: 'Читать', icon: Book, ...getImage('read') },
+        { id: 'draw', label: 'Рисовать', ...getImage('draw') },
+        { id: 'go', label: 'Идти', ...getImage('walk') },
+        { id: 'look', label: 'Смотреть', ...getImage('look') },
     ]
   }
 ];

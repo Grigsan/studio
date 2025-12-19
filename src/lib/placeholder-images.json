@@ -37,6 +37,18 @@
       "imageHint": "glass milk"
     },
     {
+      "id": "bread",
+      "description": "A loaf of bread.",
+      "imageUrl": "https://images.unsplash.com/photo-1599806112353-67c29b289a74?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxsb2FmJTIwYnJlYWR8ZW58MHx8fHwxNzY2MDY4MTAwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "loaf bread"
+    },
+    {
+      "id": "porridge",
+      "description": "A bowl of porridge.",
+      "imageUrl": "https://images.unsplash.com/photo-1506458961255-521f27805206?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxwb3JyaWRnZXxlbnwwfHx8fDE3NjYwODkyNDd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "porridge bowl"
+    },
+    {
       "id": "happy",
       "description": "A happy smiling face.",
       "imageUrl": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxoYXBweSUyMGZhY2V8ZW58MHx8fHwxNzY2MDgzMzExfDA&ixlib=rb-4.1.0&q=80&w=1080",
@@ -55,6 +67,18 @@
       "imageHint": "angry face"
     },
     {
+      "id": "surprised",
+      "description": "A surprised face.",
+      "imageUrl": "https://images.unsplash.com/photo-1558556405-3074a3931398?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxzdXJwcmlzZWQlMjBmYWNlfGVufDB8fHx8MTc2NjA4MDU1OXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "surprised face"
+    },
+    {
+      "id": "tired",
+      "description": "A tired face.",
+      "imageUrl": "https://images.unsplash.com/photo-1522204523234-8729aa6e3d54?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx0aXJlZCUyMHBlcnNvbnxlbnwwfHx8fDE3NjYwNzU2Njd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "tired person"
+    },
+    {
       "id": "mom",
       "description": "A picture of a mom.",
       "imageUrl": "https://images.unsplash.com/photo-1542385151-efd9000785a0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxtb3RoZXIlMjBjaGlsZHxlbnwwfHx8fDE3NjYwNjg3MDR8MA&ixlib=rb-4.1.0&q=80&w=1080",
@@ -71,6 +95,24 @@
       "description": "A picture of a teacher.",
       "imageUrl": "https://images.unsplash.com/photo-1511629091441-ee46146481b6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx0ZWFjaGVyJTIwY2xhc3Nyb29tfGVufDB8fHx8MTc2NjA5MjI2NXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "teacher classroom"
+    },
+    {
+      "id": "friend",
+      "description": "A picture of friends.",
+      "imageUrl": "https://images.unsplash.com/photo-1556742514-f32e4e1837b2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjaGlsZHJlbiUyMGZyaWVuZHN8ZW58MHx8fHwxNzY2MDc4OTU0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "children friends"
+    },
+    {
+      "id": "grandmother",
+      "description": "A picture of a grandmother.",
+      "imageUrl": "https://images.unsplash.com/photo-1629822432971-88b8665c3650?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxncmFuZG1vdGhlciUyMGNoaWxkfGVufDB8fHx8MTc2NjExNTU3OHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "grandmother child"
+    },
+    {
+      "id": "grandfather",
+      "description": "A picture of a grandfather.",
+      "imageUrl": "https://images.unsplash.com/photo-1596724391672-9a6743328e3b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxncmFuZGZhdGhlciUyMGNoaWxkfGVufDB8fHx8MTc2NjEyMjA0OHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "grandfather child"
     },
     {
       "id": "home",
@@ -97,6 +139,12 @@
       "imageHint": "city park"
     },
     {
+      "id": "playground",
+      "description": "A picture of a playground.",
+      "imageUrl": "https://images.unsplash.com/photo-1616461906231-1335029a147e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxwbGF5Z3JvdW5kfGVufDB8fHx8MTc2NjA1OTI4Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "playground"
+    },
+    {
       "id": "play",
       "description": "An image representing play.",
       "imageUrl": "https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjaGlsZHJlbiUyMHBsYXlpbmd8ZW58MHx8fHwxNzY2MTAxMDEyfDA&ixlib=rb-4.1.0&q=80&w=1080",
@@ -113,6 +161,114 @@
       "description": "A picture of a toilet.",
       "imageUrl": "https://images.unsplash.com/photo-1569597967185-cd6120712154?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx0b2lsZXQlMjBiYXRocm9vbXxlbnwwfHx8fDE3NjYxNTQwNDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "toilet bathroom"
+    },
+    {
+      "id": "walk",
+      "description": "An image representing walking.",
+      "imageUrl": "https://images.unsplash.com/photo-1563220038-163a3d537cb3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxjaGlsZCUyMHdhbGtpbmclMjBwYXJrfGVufDB8fHx8MTc2NjEwNTY0OHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "child walking"
+    },
+    {
+      "id": "read",
+      "description": "An image representing reading.",
+      "imageUrl": "https://images.unsplash.com/photo-1524502397800-2d82be980a8f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxjaGlsZCUyMHJlYWRpbmd8ZW58MHx8fHwxNzY2MTUzNTA0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "child reading"
+    },
+    {
+      "id": "draw",
+      "description": "An image representing drawing.",
+      "imageUrl": "https://images.unsplash.com/photo-1582202635302-8a1564a34800?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjaGlsZCUyMGRyYXdpbmd8ZW58MHx8fHwxNzY2MTQ4MjIxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "child drawing"
+    },
+    {
+      "id": "look",
+      "description": "An image representing looking.",
+      "imageUrl": "https://images.unsplash.com/photo-1588075592338-c6c35b54a234?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjaGlsZCUyMGxvb2tpbmd8ZW58MHx8fHwxNzY2MDk3MDczfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "child looking"
+    },
+    {
+      "id": "cat",
+      "description": "A picture of a cat.",
+      "imageUrl": "https://images.unsplash.com/photo-1606214174585-fe31582dc6ee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjdXRlJTIwY2F0fGVufDB8fHx8MTc2NjA3NjAyM3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cute cat"
+    },
+    {
+      "id": "dog",
+      "description": "A picture of a dog.",
+      "imageUrl": "https://images.unsplash.com/photo-1587300003388-59208cc962cb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjdXRlJTIwZG9nfGVufDB8fHx8MTc2NjEzOTU3Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cute dog"
+    },
+    {
+      "id": "bird",
+      "description": "A picture of a bird.",
+      "imageUrl": "https://images.unsplash.com/photo-1552728089-57bdde30beb3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxiZWF1dGlmdWwlMjBiaXJkfGVufDB8fHx8MTc2NjA1NTg3MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "beautiful bird"
+    },
+    {
+      "id": "fish",
+      "description": "A picture of a fish.",
+      "imageUrl": "https://images.unsplash.com/photo-1598888012273-c650573e839e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjb2xvcmZ1bCUyMGZpc2h8ZW58MHx8fHwxNzY2MDY4NDEzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "colorful fish"
+    },
+    {
+      "id": "shirt",
+      "description": "A picture of a T-shirt.",
+      "imageUrl": "https://images.unsplash.com/photo-1633966887768-64f9a867bdba?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHx0LXNoaXJ0fGVufDB8fHx8MTc2NjA3OTYwNHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "t-shirt"
+    },
+    {
+      "id": "pants",
+      "description": "A picture of pants.",
+      "imageUrl": "https://images.unsplash.com/photo-1624378439575-dadd206cde3d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwYW50c3xlbnwwfHx8fDE3NjYxMDc2MTN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "pants"
+    },
+    {
+      "id": "dress",
+      "description": "A picture of a dress.",
+      "imageUrl": "https://images.unsplash.com/photo-1605295521996-51d7c35359b3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjaGlsZCUyMGRyZXNzfGVufDB8fHx8MTc2NjA5MzExMHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "child dress"
+    },
+    {
+      "id": "hat",
+      "description": "A picture of a hat.",
+      "imageUrl": "https://images.unsplash.com/photo-1533055642199-521b1979995c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aW50ZXIlMjBoYXR8ZW58MHx8fHwxNzY2MDQyMDUwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "winter hat"
+    },
+    {
+      "id": "ball",
+      "description": "A picture of a ball.",
+      "imageUrl": "https://images.unsplash.com/photo-1552667466-07770ae110d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxiYWxsfGVufDB8fHx8MTc2NjA2MjQ0NHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "ball"
+    },
+    {
+      "id": "car",
+      "description": "A picture of a toy car.",
+      "imageUrl": "https://images.unsplash.com/photo-1594273523620-76424de8f6c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx0b3klMjBjYXJ8ZW58MHx8fHwxNzY2MTQzMzY4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "toy car"
+    },
+    {
+      "id": "doll",
+      "description": "A picture of a doll.",
+      "imageUrl": "https://images.unsplash.com/photo-1632763133644-8c465d3a579d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkb2xsfGVufDB8fHx8MTc2NjA5MzQwOHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "doll"
+    },
+    {
+      "id": "blocks",
+      "description": "A picture of toy blocks.",
+      "imageUrl": "https://images.unsplash.com/photo-1588611933120-03a0fb5605d8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx0b3klMjBibG9ja3N8ZW58MHx8fHwxNzY2MDYwMzg0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "toy blocks"
+    },
+    {
+      "id": "eat",
+      "description": "An image representing eating.",
+      "imageUrl": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxlYXRpbmd8ZW58MHx8fHwxNzY2MTMwMjc0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "eating"
+    },
+    {
+      "id": "drink",
+      "description": "An image representing drinking.",
+      "imageUrl": "https://images.unsplash.com/photo-1563191799-4a00e53a3c20?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjaGlsZCUyMGRyaW5raW5nfGVufDB8fHx8MTc2NjA5OTkyOXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "child drinking"
     },
     {
       "id": "custom-card-placeholder",
