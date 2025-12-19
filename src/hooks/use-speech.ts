@@ -6,20 +6,25 @@ export function useSpeech() {
   const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
   const [isSpeaking, setIsSpeaking] = useState(false);
 
-  const updateVoices = useCallback(() => {
-    const availableVoices = window.speechSynthesis.getVoices();
-    setVoices(availableVoices);
-  }, []);
-
   useEffect(() => {
-    updateVoices();
-    window.speechSynthesis.onvoiceschanged = updateVoices;
+    const handleVoicesChanged = () => {
+      setVoices(window.speechSynthesis.getVoices());
+    };
+
+    // Get initial voices
+    const initialVoices = window.speechSynthesis.getVoices();
+    if (initialVoices.length > 0) {
+      setVoices(initialVoices);
+    }
+
+    // Subscribe to voice changes
+    window.speechSynthesis.addEventListener('voiceschanged', handleVoicesChanged);
 
     return () => {
-      window.speechSynthesis.onvoiceschanged = null;
+      window.speechSynthesis.removeEventListener('voiceschanged', handleVoicesChanged);
       window.speechSynthesis.cancel();
     };
-  }, [updateVoices]);
+  }, []);
 
   const speak = useCallback((text: string) => {
     if (isSpeaking) {
@@ -27,14 +32,18 @@ export function useSpeech() {
     }
 
     const utterance = new SpeechSynthesisUtterance(text);
-    const russianVoice = voices.find(voice => voice.lang === 'ru-RU');
+    // Find the best available Russian voice
+    const russianVoice = voices.find(voice => voice.lang === 'ru-RU' && voice.localService) || voices.find(voice => voice.lang === 'ru-RU');
     
     utterance.voice = russianVoice || voices.find(voice => voice.lang.startsWith('ru')) || null;
     utterance.lang = 'ru-RU';
     
     utterance.onstart = () => setIsSpeaking(true);
     utterance.onend = () => setIsSpeaking(false);
-    utterance.onerror = () => setIsSpeaking(false);
+    utterance.onerror = (event) => {
+      console.error("SpeechSynthesisUtterance.onerror", event);
+      setIsSpeaking(false);
+    };
     
     window.speechSynthesis.speak(utterance);
   }, [voices, isSpeaking]);
