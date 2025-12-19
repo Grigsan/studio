@@ -70,7 +70,8 @@ import {
   Minus,
   MoveLeft,
   MoveRight,
-  PencilRuler
+  PencilRuler,
+  Calculator
 } from 'lucide-react';
 
 export interface CardItem {
@@ -230,6 +231,8 @@ export const CATEGORIES: Category[] = [
     label: 'Одежда',
     icon: Shirt,
     items: [
+      { id: 'get-dressed', label: 'Одеваться', icon: Shirt },
+      { id: 'undress', label: 'Раздеваться', icon: Shirt },
       { id: 'shirt', label: 'Футболка', icon: Shirt },
       { id: 'pants', label: 'Штаны', icon: Square },
       { id: 'dress', label: 'Платье', icon: Square },
@@ -243,6 +246,10 @@ export const CATEGORIES: Category[] = [
     label: 'Учеба',
     icon: PencilRuler,
     items: [
+      { id: 'read-school', label: 'Читать', icon: BookOpen },
+      { id: 'write-school', label: 'Писать', icon: Pencil },
+      { id: 'draw-school', label: 'Рисовать', icon: Paintbrush },
+      { id: 'count-school', label: 'Считать', icon: Calculator },
       { id: 'pencil', label: 'Карандаш', icon: Pencil },
       { id: 'pen', label: 'Ручка', icon: Pencil },
       { id: 'book', label: 'Книга', icon: Book },
