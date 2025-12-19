@@ -11,7 +11,7 @@ import {
   Shirt,
   Cat,
 } from 'lucide-react';
-import { PlaceHolderImages } from './placeholder-images';
+import data from './placeholder-images.json';
 
 export interface CardItem {
   id: string;
@@ -29,7 +29,7 @@ export interface Category {
 }
 
 const getImage = (id: string) => {
-    const img = PlaceHolderImages.find(p => p.id === id);
+    const img = data.placeholderImages.find(p => p.id === id);
     return { imageUrl: img?.imageUrl, imageHint: img?.imageHint };
 }
 
