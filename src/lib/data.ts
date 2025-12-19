@@ -42,7 +42,7 @@ import {
   Milk,
   Bath,
   ShowerHead,
-  Sofa,
+Sofa,
   Lamp,
   Tv,
   Stethoscope,
@@ -136,6 +136,7 @@ export const CATEGORIES: Category[] = [
     label: 'Еда',
     icon: Utensils,
     items: [
+      { id: 'eat-food', label: 'Есть', icon: Utensils },
       { id: 'apple', label: 'Яблоко', icon: Apple },
       { id: 'banana', label: 'Банан', icon: Apple }, // Using Apple as a generic fruit icon
       { id: 'soup', label: 'Суп', icon: Soup },
@@ -152,6 +153,7 @@ export const CATEGORIES: Category[] = [
     label: 'Напитки',
     icon: GlassWater,
     items: [
+        { id: 'drink-drinks', label: 'Пить', icon: GlassWater },
         { id: 'water', label: 'Вода', icon: GlassWater },
         { id: 'juice', label: 'Сок', icon: GlassWater },
         { id: 'milk', label: 'Молоко', icon: Milk },
@@ -176,6 +178,7 @@ export const CATEGORIES: Category[] = [
     label: 'Люди',
     icon: Users,
     items: [
+      { id: 'talk', label: 'Говорить', icon: MessageSquareQuote },
       { id: 'mom', label: 'Мама', icon: Users },
       { id: 'dad', label: 'Папа', icon: Users },
       { id: 'teacher', label: 'Учитель', icon: Users },
@@ -191,6 +194,7 @@ export const CATEGORIES: Category[] = [
     label: 'Места',
     icon: Home,
     items: [
+      { id: 'go-to', label: 'Идти', icon: Footprints },
       { id: 'home', label: 'Дом', icon: Home },
       { id: 'school', label: 'Школа', icon: School },
       { id: 'shop', label: 'Магазин', icon: ShoppingBag },
@@ -207,12 +211,13 @@ export const CATEGORIES: Category[] = [
     label: 'Игрушки',
     icon: ToyBrick,
     items: [
+      { id: 'play-toys', label: 'Играть', icon: ToyBrick },
       { id: 'ball', label: 'Мяч', icon: Circle },
       { id: 'car', label: 'Машинка', icon: Car },
       { id: 'doll', label: 'Кукла', icon: PersonStanding },
       { id: 'blocks', label: 'Кубики', icon: Square },
       { id: 'book', label: 'Книга', icon: Book },
-      { id: 'puzzle', label: 'Пазл', icon: ToyBrick },
+      { id_ : 'puzzle', label: 'Пазл', icon: ToyBrick },
     ],
   },
   {
@@ -220,6 +225,7 @@ export const CATEGORIES: Category[] = [
     label: 'Животные',
     icon: Cat,
     items: [
+      { id: 'pet', label: 'Гладить', icon: Hand },
       { id: 'cat', label: 'Кошка', icon: Cat },
       { id: 'dog', label: 'Собака', icon: Dog },
       { id: 'bird', label: 'Птица', icon: Bird },
@@ -311,6 +317,7 @@ export const CATEGORIES: Category[] = [
     label: 'Транспорт',
     icon: Car,
     items: [
+        { id: 'drive', label: 'Ехать', icon: Car },
         { id: 'car', label: 'Машина', icon: Car },
         { id: 'bus', label: 'Автобус', icon: Bus },
         { id: 'train', label: 'Поезд', icon: Train },
@@ -341,6 +348,11 @@ CATEGORIES.forEach(category => {
   category.items.forEach(item => {
     if (!item.icon) {
       item.icon = DefaultIcon;
+    }
+    // Fix for puzzle id
+    if ((item as any).id_ === 'puzzle') {
+        item.id = 'puzzle';
+        delete (item as any).id_;
     }
   });
 });
