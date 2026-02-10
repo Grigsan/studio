@@ -129,11 +129,6 @@ export const CATEGORIES: Category[] = [
       { id: 'stand', label: 'Стоять', icon: PersonStanding },
       { id: 'give', label: 'Дать', icon: Hand },
       { id: 'take', label: 'Взять', icon: Hand },
-      { id: 'get-dressed', label: 'Одеваться', icon: Shirt },
-      { id: 'undress', label: 'Раздеваться', icon: Shirt },
-      { id: 'count-school', label: 'Считать', icon: Calculator },
-      { id: 'pet', label: 'Гладить', icon: Hand },
-      { id: 'drive', label: 'Ехать', icon: Car },
     ],
   },
   {
