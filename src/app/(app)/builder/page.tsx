@@ -9,6 +9,7 @@ import { Play, Trash2, X } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { PaginatedGrid } from '@/components/paginated-grid';
 
 export default function PhraseBuilderPage() {
   const [phrase, setPhrase] = useState<CardItem[]>([]);
@@ -91,7 +92,7 @@ export default function PhraseBuilderPage() {
       </Card>
 
       <Tabs defaultValue="all" className="flex-grow flex flex-col overflow-hidden">
-        <TabsList className="grid w-full shrink-0 grid-cols-2 md:grid-cols-4 lg:grid-cols-7 xl:grid-cols-9">
+        <TabsList className="h-auto shrink-0 flex-wrap justify-start">
             <TabsTrigger value="all">Все</TabsTrigger>
             {CATEGORIES.map(category => (
                 <TabsTrigger key={category.id} value={category.id}>{category.label}</TabsTrigger>
@@ -99,29 +100,19 @@ export default function PhraseBuilderPage() {
         </TabsList>
         <ScrollArea className="mt-4 flex-grow">
         <TabsContent value="all">
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4">
-                {ALL_ITEMS.map((item) => (
-                    <IconCard
-                        key={item.id}
-                        label={item.label}
-                        icon={item.icon}
-                        onClick={() => addToPhrase(item)}
-                    />
-                ))}
-            </div>
+            <PaginatedGrid 
+              items={ALL_ITEMS} 
+              onItemClick={addToPhrase} 
+              getKey={(item, index) => `${item.id}-${index}`}
+            />
         </TabsContent>
         {CATEGORIES.map(category => (
             <TabsContent key={category.id} value={category.id}>
-                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4">
-                    {category.items.map((item) => (
-                        <IconCard
-                            key={item.id}
-                            label={item.label}
-                            icon={item.icon}
-                            onClick={() => addToPhrase(item)}
-                        />
-                    ))}
-                </div>
+                <PaginatedGrid 
+                  items={category.items} 
+                  onItemClick={addToPhrase} 
+                  getKey={(item) => item.id}
+                />
             </TabsContent>
         ))}
         </ScrollArea>
