@@ -13,8 +13,8 @@ import {
   SidebarSeparator
 } from '@/components/ui/sidebar';
 import { Grid3x3, MessageSquarePlus, FolderPlus, MessageCircleHeart, LogOut } from 'lucide-react';
-import { useUser } from '@/firebase/auth/use-user';
-import { getAuth, signOut } from 'firebase/auth';
+import { useUser, useAuth } from '@/firebase';
+import { signOut } from 'firebase/auth';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { Button } from '../ui/button';
 import { Skeleton } from '../ui/skeleton';
@@ -28,7 +28,7 @@ const navItems = [
 export function AppSidebar() {
   const pathname = usePathname();
   const { user, isLoading } = useUser();
-  const auth = getAuth();
+  const auth = useAuth();
 
   const handleSignOut = () => {
     signOut(auth);
