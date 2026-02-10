@@ -16,12 +16,8 @@ export async function initializeFirebase(): Promise<{
   auth: Auth;
   firestore: Firestore;
 }> {
-  return new Promise((resolve) => {
-    if (typeof window !== 'undefined') {
-      const { app, auth, firestore } = getFirebase();
-      resolve({ app, auth, firestore });
-    }
-  });
+    const { app, auth, firestore } = getFirebase();
+    return { app, auth, firestore };
 }
 
 export * from './provider';

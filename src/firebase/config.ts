@@ -1,10 +1,9 @@
-// This file is populated with a temporary dummy configuration.
-// The real configuration will be injected by the Firebase platform during deployment.
+
 export const firebaseConfig = {
-    apiKey: "AIzaSy...YOUR_API_KEY",
-    authDomain: "your-project-id.firebaseapp.com",
-    projectId: "your-project-id",
-    storageBucket: "your-project-id.appspot.com",
-    messagingSenderId: "your-sender-id",
-    appId: "1:your-sender-id:web:your-app-id",
+  "projectId": "studio-6463950600-edbff",
+  "appId": "1:267858110872:web:9dcb9b0ab7fd565a82a3ed",
+  "apiKey": "AIzaSyBjlPR841YvcLvKNnbBxNakxDiExjj7B8A",
+  "authDomain": "studio-6463950600-edbff.firebaseapp.com",
+  "measurementId": "",
+  "messagingSenderId": "267858110872"
 };
