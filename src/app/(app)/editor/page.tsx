@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -12,7 +12,11 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { IconCard } from '@/components/icon-card';
 import { PlusCircle, Mic } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
-import type { CardItem } from '@/lib/data';
+import { addCustomCard } from '@/lib/firestore';
+import { useUser, useFirebase, useCollection } from '@/firebase';
+import { collection } from 'firebase/firestore';
+import type { CardItem } from '@/lib/types';
+import { Skeleton } from '@/components/ui/skeleton';
 
 const formSchema = z.object({
   label: z.string().min(2, { message: 'Название должно быть не менее 2 символов.' }),
@@ -21,11 +25,17 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
-const initialCustomCards: CardItem[] = [];
-
 export default function ContentEditorPage() {
-  const [customCards, setCustomCards] = useState<CardItem[]>(initialCustomCards);
   const { toast } = useToast();
+  const { user } = useUser();
+  const { firestore } = useFirebase();
+
+  const customCardsQuery = useMemo(() => {
+    if (!firestore || !user) return null;
+    return collection(firestore, 'users', user.uid, 'cards');
+  }, [firestore, user]);
+
+  const { data: customCards, isLoading: isLoadingCards } = useCollection<CardItem>(customCardsQuery);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -35,19 +45,31 @@ export default function ContentEditorPage() {
     },
   });
 
-  function onSubmit(values: FormValues) {
-    // This logic is flawed as it only works with image URLs
-    // For now, we'll just create a card without an image/icon
-    const newCard: CardItem = {
-      id: `custom-${Date.now()}`,
-      label: values.label,
-    };
-    setCustomCards(prev => [...prev, newCard]);
-    toast({
-      title: "Карточка добавлена!",
-      description: `Новая карточка "${values.label}" успешно создана.`,
-    });
-    form.reset();
+  async function onSubmit(values: FormValues) {
+    if (!firestore || !user) {
+        toast({
+            variant: "destructive",
+            title: "Ошибка",
+            description: "Вы не авторизованы.",
+        });
+        return;
+    }
+    
+    try {
+        await addCustomCard(firestore, user.uid, values.label);
+        toast({
+          title: "Карточка добавлена!",
+          description: `Новая карточка "${values.label}" успешно создана.`,
+        });
+        form.reset();
+    } catch(error) {
+        console.error("Error adding card:", error);
+        toast({
+            variant: "destructive",
+            title: "Не удалось добавить карточку",
+            description: "Произошла ошибка при сохранении.",
+        });
+    }
   }
 
   return (
@@ -108,7 +130,7 @@ export default function ContentEditorPage() {
                     <p className="text-xs text-muted-foreground">Функция записи аудио будет добавлена в будущем.</p>
                 </div>
 
-                <Button type="submit" className="w-full" size="lg">
+                <Button type="submit" className="w-full" size="lg" disabled={!user}>
                   <PlusCircle className="mr-2 h-5 w-5" />
                   Добавить карточку
                 </Button>
@@ -122,13 +144,18 @@ export default function ContentEditorPage() {
             <CardTitle>Мои карточки</CardTitle>
           </CardHeader>
           <CardContent>
-            {customCards.length === 0 ? (
+            {isLoadingCards && (
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    {[...Array(3)].map((_, i) => <Skeleton key={i} className="w-full h-32" />)}
+                </div>
+            )}
+            {!isLoadingCards && customCards && customCards.length === 0 ? (
               <div className="flex items-center justify-center h-48 border-2 border-dashed rounded-lg">
                 <p className="text-muted-foreground">Здесь появятся ваши карточки</p>
               </div>
             ) : (
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                {customCards.map(card => (
+                {customCards?.map(card => (
                   <IconCard
                     key={card.id}
                     label={card.label}

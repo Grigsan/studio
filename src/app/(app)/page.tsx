@@ -4,7 +4,8 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { IconCard } from '@/components/icon-card';
 import { useSpeech } from '@/hooks/use-speech';
-import { CATEGORIES, type Category } from '@/lib/data';
+import { CATEGORIES } from '@/lib/data';
+import type { Category } from '@/lib/types';
 import { ArrowLeft } from 'lucide-react';
 
 export default function InteractiveBoardsPage() {

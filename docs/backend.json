@@ -1,0 +1,35 @@
+{
+    "entities": {
+      "CardItem": {
+        "title": "Card Item",
+        "description": "Represents a custom card created by a user.",
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "description": "The text label for the card."
+          },
+          "userId": {
+              "type": "string",
+              "description": "The ID of the user who created this card."
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": ["label", "userId", "createdAt"]
+      }
+    },
+    "auth": {
+      "providers": ["google.com"]
+    },
+    "firestore": {
+      "/users/{userId}/cards/{cardId}": {
+        "schema": {
+          "$ref": "#/backend/entities/CardItem"
+        },
+        "description": "Stores custom cards created by a user."
+      }
+    }
+}

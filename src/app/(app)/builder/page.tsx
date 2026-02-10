@@ -1,19 +1,44 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
 import { IconCard } from '@/components/icon-card';
 import { useSpeech } from '@/hooks/use-speech';
-import { CATEGORIES, ALL_ITEMS, type CardItem } from '@/lib/data';
-import { Play, Trash2, X } from 'lucide-react';
+import { CATEGORIES, ALL_ITEMS } from '@/lib/data';
+import type { CardItem, Category } from '@/lib/types';
+import { Play, Trash2, X, Folder, Sparkles } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { PaginatedGrid } from '@/components/paginated-grid';
+import { useUser, useCollection, useFirebase } from '@/firebase';
+import { collection } from 'firebase/firestore';
+
 
 export default function PhraseBuilderPage() {
   const [phrase, setPhrase] = useState<CardItem[]>([]);
   const { speak, isSpeaking } = useSpeech();
+
+  const { user } = useUser();
+  const { firestore } = useFirebase();
+
+  const customCardsQuery = useMemo(() => {
+    if (!firestore || !user) return null;
+    return collection(firestore, 'users', user.uid, 'cards');
+  }, [firestore, user]);
+
+  const { data: customCards = [] } = useCollection<CardItem>(customCardsQuery);
+
+  const myCardsCategory: Category | null = customCards.length > 0 ? {
+    id: 'my-cards',
+    label: 'Мои карточки',
+    icon: Sparkles,
+    items: customCards,
+  } : null;
+
+  const allCategories = myCardsCategory ? [myCardsCategory, ...CATEGORIES] : CATEGORIES;
+  const allItemsWithCustom = [...(myCardsCategory?.items || []), ...ALL_ITEMS];
+
 
   const addToPhrase = (item: CardItem) => {
     setPhrase((currentPhrase) => [...currentPhrase, item]);
@@ -94,24 +119,24 @@ export default function PhraseBuilderPage() {
       <Tabs defaultValue="all" className="flex-grow flex flex-col overflow-hidden">
         <TabsList className="h-auto shrink-0 flex-wrap justify-start">
             <TabsTrigger value="all">Все</TabsTrigger>
-            {CATEGORIES.map(category => (
+            {allCategories.map(category => (
                 <TabsTrigger key={category.id} value={category.id}>{category.label}</TabsTrigger>
             ))}
         </TabsList>
         <ScrollArea className="mt-4 flex-grow">
         <TabsContent value="all">
             <PaginatedGrid 
-              items={ALL_ITEMS} 
+              items={allItemsWithCustom} 
               onItemClick={addToPhrase} 
               getKey={(item, index) => `${item.id}-${index}`}
             />
         </TabsContent>
-        {CATEGORIES.map(category => (
+        {allCategories.map(category => (
             <TabsContent key={category.id} value={category.id}>
                 <PaginatedGrid 
                   items={category.items} 
                   onItemClick={addToPhrase} 
-                  getKey={(item) => item.id}
+                  getKey={(item) => item.id!}
                 />
             </TabsContent>
         ))}

@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { IconCard } from '@/components/icon-card';
-import type { CardItem } from '@/lib/data';
+import type { CardItem } from '@/lib/types';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface PaginatedGridProps {

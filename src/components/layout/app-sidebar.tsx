@@ -10,8 +10,14 @@ import {
   SidebarContent,
   SidebarFooter,
   SidebarTrigger,
+  SidebarSeparator
 } from '@/components/ui/sidebar';
-import { Grid3x3, MessageSquarePlus, FolderPlus, MessageCircleHeart } from 'lucide-react';
+import { Grid3x3, MessageSquarePlus, FolderPlus, MessageCircleHeart, LogOut } from 'lucide-react';
+import { useUser } from '@/firebase/auth/use-user';
+import { getAuth, signOut } from 'firebase/auth';
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
+import { Button } from '../ui/button';
+import { Skeleton } from '../ui/skeleton';
 
 const navItems = [
   { href: '/', label: 'Доски', icon: Grid3x3 },
@@ -21,6 +27,12 @@ const navItems = [
 
 export function AppSidebar() {
   const pathname = usePathname();
+  const { user, isLoading } = useUser();
+  const auth = getAuth();
+
+  const handleSignOut = () => {
+    signOut(auth);
+  }
 
   return (
     <>
@@ -53,7 +65,42 @@ export function AppSidebar() {
           ))}
         </SidebarMenu>
       </SidebarContent>
-      <SidebarFooter>
+      <SidebarFooter className="flex flex-col gap-2">
+        <SidebarSeparator />
+         <div className="flex items-center gap-2 p-2 group-data-[collapsible=icon]:justify-center">
+            {isLoading ? (
+                <Skeleton className="h-8 w-8 rounded-full" />
+            ) : user ? (
+                <Avatar className="h-8 w-8">
+                    <AvatarImage src={user.photoURL || ''} alt={user.displayName || 'User'} />
+                    <AvatarFallback>{user.displayName?.[0]}</AvatarFallback>
+                </Avatar>
+            ) : null}
+
+            <div className="flex flex-col group-data-[collapsible=icon]:hidden">
+                {isLoading ? (
+                    <>
+                        <Skeleton className="h-4 w-24 mb-1" />
+                        <Skeleton className="h-3 w-32" />
+                    </>
+                ) : user ? (
+                    <>
+                        <span className="text-sm font-semibold text-foreground truncate">{user.displayName}</span>
+                        <span className="text-xs text-muted-foreground truncate">{user.email}</span>
+                    </>
+                ) : null}
+            </div>
+        </div>
+
+        <Button 
+            variant="ghost" 
+            className="w-full justify-start"
+            onClick={handleSignOut}
+        >
+            <LogOut />
+            <span className="group-data-[collapsible=icon]:hidden">Выйти</span>
+        </Button>
+
         <div className="text-xs text-muted-foreground p-2 text-center group-data-[collapsible=icon]:hidden">
             <p>Сделано с ❤️ для особенных детей</p>
         </div>

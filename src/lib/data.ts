@@ -1,4 +1,3 @@
-import type { LucideIcon } from 'lucide-react';
 import {
   Utensils,
   Smile,
@@ -73,19 +72,8 @@ import {
   PencilRuler,
   Calculator
 } from 'lucide-react';
+import type { Category, CardItem } from './types';
 
-export interface CardItem {
-  id: string;
-  label: string;
-  icon?: LucideIcon;
-}
-
-export interface Category {
-  id: string;
-  label: string;
-  icon: LucideIcon;
-  items: CardItem[];
-}
 
 export const CATEGORIES: Category[] = [
   {
@@ -114,8 +102,6 @@ export const CATEGORIES: Category[] = [
     label: 'Действия',
     icon: HelpingHand,
     items: [
-      { id: 'eat', label: 'Есть', icon: Utensils },
-      { id: 'drink', label: 'Пить', icon: GlassWater },
       { id: 'go', label: 'Идти', icon: Footprints },
       { id: 'play', label: 'Играть', icon: ToyBrick },
       { id: 'sleep', label: 'Спать', icon: Bed },
@@ -347,11 +333,6 @@ CATEGORIES.forEach(category => {
   category.items.forEach(item => {
     if (!item.icon) {
       item.icon = DefaultIcon;
-    }
-    // Fix for puzzle id
-    if ((item as any).id_ === 'puzzle') {
-        item.id = 'puzzle';
-        delete (item as any).id_;
     }
   });
 });
