@@ -1,15 +1,13 @@
 'use client';
-import { GoogleAuthProvider, signInWithRedirect, getAuth } from 'firebase/auth';
-import { useFirebaseApp } from '@/firebase';
+import { GoogleAuthProvider, signInWithRedirect } from 'firebase/auth';
+import { useAuth, useUser } from '@/firebase';
 import { Button } from '@/components/ui/button';
 import { MessageCircleHeart } from 'lucide-react';
-import { useUser } from '@/firebase';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
 export default function LoginPage() {
-  const app = useFirebaseApp();
-  const auth = getAuth(app);
+  const auth = useAuth();
   const { user, isLoading } = useUser();
   const router = useRouter();
 
@@ -20,6 +18,7 @@ export default function LoginPage() {
   }, [user, router]);
 
   const handleGoogleSignIn = () => {
+    if (!auth) return;
     const provider = new GoogleAuthProvider();
     signInWithRedirect(auth, provider);
   };
