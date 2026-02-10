@@ -13,7 +13,7 @@ import { IconCard } from '@/components/icon-card';
 import { PlusCircle, Mic } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 import { addCustomCard } from '@/lib/firestore';
-import { useUser, useFirebase, useCollection } from '@/firebase';
+import { useFirebase, useCollection } from '@/firebase';
 import { collection } from 'firebase/firestore';
 import type { CardItem } from '@/lib/types';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -27,13 +27,12 @@ type FormValues = z.infer<typeof formSchema>;
 
 export default function ContentEditorPage() {
   const { toast } = useToast();
-  const { user } = useUser();
   const { firestore } = useFirebase();
 
   const customCardsQuery = useMemo(() => {
-    if (!firestore || !user) return null;
-    return collection(firestore, 'users', user.uid, 'cards');
-  }, [firestore, user]);
+    if (!firestore) return null;
+    return collection(firestore, 'cards');
+  }, [firestore]);
 
   const { data: customCards, isLoading: isLoadingCards } = useCollection<CardItem>(customCardsQuery);
 
@@ -46,17 +45,17 @@ export default function ContentEditorPage() {
   });
 
   async function onSubmit(values: FormValues) {
-    if (!firestore || !user) {
+    if (!firestore) {
         toast({
             variant: "destructive",
             title: "Ошибка",
-            description: "Вы не авторизованы.",
+            description: "База данных не доступна.",
         });
         return;
     }
     
     try {
-        await addCustomCard(firestore, user.uid, values.label);
+        await addCustomCard(firestore, values.label);
         toast({
           title: "Карточка добавлена!",
           description: `Новая карточка "${values.label}" успешно создана.`,
@@ -130,7 +129,7 @@ export default function ContentEditorPage() {
                     <p className="text-xs text-muted-foreground">Функция записи аудио будет добавлена в будущем.</p>
                 </div>
 
-                <Button type="submit" className="w-full" size="lg" disabled={!user}>
+                <Button type="submit" className="w-full" size="lg">
                   <PlusCircle className="mr-2 h-5 w-5" />
                   Добавить карточку
                 </Button>

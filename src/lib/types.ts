@@ -6,7 +6,6 @@ export interface CardItem {
   icon?: LucideIcon;
   imageUrl?: string;
   audioUrl?: string;
-  userId?: string;
 }
 
 export interface Category {

@@ -5,12 +5,10 @@ import {
   SidebarInset,
 } from '@/components/ui/sidebar';
 import { AppSidebar } from '@/components/layout/app-sidebar';
-import { AuthGate } from '@/firebase/auth/auth-gate';
 
 
 export default function AppLayout({ children }: { children: ReactNode }) {
   return (
-    <AuthGate>
       <SidebarProvider>
         <Sidebar>
           <AppSidebar />
@@ -21,6 +19,5 @@ export default function AppLayout({ children }: { children: ReactNode }) {
           </main>
         </SidebarInset>
       </SidebarProvider>
-    </AuthGate>
   );
 }

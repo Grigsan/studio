@@ -9,27 +9,23 @@
             "type": "string",
             "description": "The text label for the card."
           },
-          "userId": {
-              "type": "string",
-              "description": "The ID of the user who created this card."
-          },
           "createdAt": {
             "type": "string",
             "format": "date-time"
           }
         },
-        "required": ["label", "userId", "createdAt"]
+        "required": ["label", "createdAt"]
       }
     },
     "auth": {
-      "providers": ["google.com"]
+      "providers": []
     },
     "firestore": {
-      "/users/{userId}/cards/{cardId}": {
+      "/cards/{cardId}": {
         "schema": {
           "$ref": "#/backend/entities/CardItem"
         },
-        "description": "Stores custom cards created by a user."
+        "description": "Stores custom cards shared by all users."
       }
     }
 }

@@ -11,7 +11,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { PaginatedGrid } from '@/components/paginated-grid';
-import { useUser, useCollection, useFirebase } from '@/firebase';
+import { useCollection, useFirebase } from '@/firebase';
 import { collection } from 'firebase/firestore';
 
 
@@ -19,13 +19,12 @@ export default function PhraseBuilderPage() {
   const [phrase, setPhrase] = useState<CardItem[]>([]);
   const { speak, isSpeaking } = useSpeech();
 
-  const { user } = useUser();
   const { firestore } = useFirebase();
 
   const customCardsQuery = useMemo(() => {
-    if (!firestore || !user) return null;
-    return collection(firestore, 'users', user.uid, 'cards');
-  }, [firestore, user]);
+    if (!firestore) return null;
+    return collection(firestore, 'cards');
+  }, [firestore]);
 
   const { data: customCards = [] } = useCollection<CardItem>(customCardsQuery);
 
