@@ -90,14 +90,14 @@ export default function PhraseBuilderPage() {
         </div>
       </Card>
 
-      <Tabs defaultValue="all" className="flex-grow">
-        <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 lg:grid-cols-7 xl:grid-cols-9">
+      <Tabs defaultValue="all" className="flex-grow flex flex-col overflow-hidden">
+        <TabsList className="grid w-full shrink-0 grid-cols-2 md:grid-cols-4 lg:grid-cols-7 xl:grid-cols-9">
             <TabsTrigger value="all">Все</TabsTrigger>
             {CATEGORIES.map(category => (
                 <TabsTrigger key={category.id} value={category.id}>{category.label}</TabsTrigger>
             ))}
         </TabsList>
-        <ScrollArea className="h-[calc(100%-4rem)] mt-4">
+        <ScrollArea className="mt-4 flex-grow">
         <TabsContent value="all">
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4">
                 {ALL_ITEMS.map((item) => (
