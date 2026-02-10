@@ -1,16 +1,37 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
 import { IconCard } from '@/components/icon-card';
 import { useSpeech } from '@/hooks/use-speech';
 import { CATEGORIES } from '@/lib/data';
-import type { Category } from '@/lib/types';
-import { ArrowLeft } from 'lucide-react';
+import type { Category, CardItem } from '@/lib/types';
+import { ArrowLeft, Sparkles } from 'lucide-react';
+import { useCollection, useFirebase } from '@/firebase';
+import { collection } from 'firebase/firestore';
+
 
 export default function InteractiveBoardsPage() {
   const [selectedCategory, setSelectedCategory] = useState<Category | null>(null);
   const { speak } = useSpeech();
+  const { firestore } = useFirebase();
+
+  const customCardsQuery = useMemo(() => {
+    if (!firestore) return null;
+    return collection(firestore, 'cards');
+  }, [firestore]);
+
+  const { data: customCardsData } = useCollection<CardItem>(customCardsQuery);
+
+  const myCardsCategory: Category | null = customCardsData && customCardsData.length > 0 ? {
+    id: 'my-cards',
+    label: 'Мои карточки',
+    icon: Sparkles,
+    items: customCardsData,
+  } : null;
+
+  const allCategories = myCardsCategory ? [myCardsCategory, ...CATEGORIES] : CATEGORIES;
+
 
   const handleItemClick = (label: string) => {
     speak(label);
@@ -37,7 +58,7 @@ export default function InteractiveBoardsPage() {
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
         {!selectedCategory
-          ? CATEGORIES.map((category) => (
+          ? allCategories.map((category) => (
               <IconCard
                 key={category.id}
                 label={category.label}
