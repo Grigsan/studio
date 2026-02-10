@@ -45,7 +45,7 @@ export default function ContentEditorPage() {
     },
   });
 
-  async function onSubmit(values: FormValues) {
+  function onSubmit(values: FormValues) {
     if (!firestore) {
         toast({
             variant: "destructive",
@@ -55,21 +55,22 @@ export default function ContentEditorPage() {
         return;
     }
     
-    try {
-        await addCustomCard(firestore, values.label);
-        toast({
-          title: "Карточка добавлена!",
-          description: `Новая карточка "${values.label}" успешно создана.`,
+    addCustomCard(firestore, values.label)
+        .then(() => {
+            toast({
+              title: "Карточка добавлена!",
+              description: `Новая карточка "${values.label}" успешно создана.`,
+            });
+            form.reset();
+        })
+        .catch((error) => {
+            console.error("Error adding card:", error);
+            toast({
+                variant: "destructive",
+                title: "Не удалось добавить карточку",
+                description: "Произошла ошибка при сохранении. Проверьте консоль для деталей.",
+            });
         });
-        form.reset();
-    } catch(error) {
-        console.error("Error adding card:", error);
-        toast({
-            variant: "destructive",
-            title: "Не удалось добавить карточку",
-            description: "Произошла ошибка при сохранении.",
-        });
-    }
   }
 
   return (
