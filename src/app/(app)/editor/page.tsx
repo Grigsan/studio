@@ -34,7 +34,8 @@ export default function ContentEditorPage() {
     return collection(firestore, 'cards');
   }, [firestore]);
 
-  const { data: customCards = [], isLoading: isLoadingCards } = useCollection<CardItem>(customCardsQuery);
+  const { data: customCardsData, isLoading: isLoadingCards } = useCollection<CardItem>(customCardsQuery);
+  const customCards = customCardsData || [];
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -154,7 +155,7 @@ export default function ContentEditorPage() {
               </div>
             ) : (
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                {customCards?.map(card => (
+                {customCards.map(card => (
                   <IconCard
                     key={card.id}
                     label={card.label}

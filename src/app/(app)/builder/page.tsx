@@ -26,7 +26,9 @@ export default function PhraseBuilderPage() {
     return collection(firestore, 'cards');
   }, [firestore]);
 
-  const { data: customCards = [] } = useCollection<CardItem>(customCardsQuery);
+  const { data: customCardsData } = useCollection<CardItem>(customCardsQuery);
+  const customCards = customCardsData || [];
+
 
   const myCardsCategory: Category | null = customCards.length > 0 ? {
     id: 'my-cards',
