@@ -64,11 +64,12 @@ export default function ContentEditorPage() {
             form.reset();
         })
         .catch((error) => {
-            console.error("Error adding card:", error);
+            // The global error handler will show a detailed error in dev.
+            // We just show a simple toast here for the user.
             toast({
                 variant: "destructive",
                 title: "Не удалось добавить карточку",
-                description: "Произошла ошибка при сохранении. Проверьте консоль для деталей.",
+                description: "Произошла ошибка при сохранении. Возможно, у вас нет прав доступа.",
             });
         });
   }

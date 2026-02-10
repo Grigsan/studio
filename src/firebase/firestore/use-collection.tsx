@@ -1,7 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { onSnapshot, type Query, type DocumentData } from 'firebase/firestore';
+import { onSnapshot, type Query, type DocumentData, type CollectionReference } from 'firebase/firestore';
+import { errorEmitter } from '@/firebase/error-emitter';
+import { FirestorePermissionError } from '@/firebase/errors';
 
 export function useCollection<T extends DocumentData>(query: Query | null) {
   const [data, setData] = useState<T[] | null>(null);
@@ -16,6 +18,9 @@ export function useCollection<T extends DocumentData>(query: Query | null) {
     }
 
     setIsLoading(true);
+    // The path is not directly on the Query type, so we need a cast.
+    // It's safe here because we know we are passing collection references.
+    const queryPath = (query as CollectionReference).path;
 
     const unsubscribe = onSnapshot(
       query,
@@ -26,9 +31,15 @@ export function useCollection<T extends DocumentData>(query: Query | null) {
         });
         setData(result);
         setIsLoading(false);
+        setError(null);
       },
       (err) => {
-        console.error('Error in useCollection:', err);
+        const permissionError = new FirestorePermissionError({
+            path: queryPath,
+            operation: 'list',
+        });
+        errorEmitter.emit('permission-error', permissionError);
+
         setError(err);
         setIsLoading(false);
       }
