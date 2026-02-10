@@ -34,7 +34,7 @@ export default function ContentEditorPage() {
     return collection(firestore, 'cards');
   }, [firestore]);
 
-  const { data: customCards, isLoading: isLoadingCards } = useCollection<CardItem>(customCardsQuery);
+  const { data: customCards = [], isLoading: isLoadingCards } = useCollection<CardItem>(customCardsQuery);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -148,7 +148,7 @@ export default function ContentEditorPage() {
                     {[...Array(3)].map((_, i) => <Skeleton key={i} className="w-full h-32" />)}
                 </div>
             )}
-            {!isLoadingCards && customCards && customCards.length === 0 ? (
+            {!isLoadingCards && customCards.length === 0 ? (
               <div className="flex items-center justify-center h-48 border-2 border-dashed rounded-lg">
                 <p className="text-muted-foreground">Здесь появятся ваши карточки</p>
               </div>
